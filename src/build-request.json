@@ -1,0 +1,39 @@
+{
+  "kind": "build_request",
+  "title": "Replace hero section image with uploaded Fish Edit image",
+  "priority": "normal",
+  "requirements": [
+    {
+      "id": "REQ-1",
+      "text": "Replace the current hero section logo image with the uploaded 'Fish Edit.png' image in the Home page component",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-user-final"
+        ],
+        "quotes": [
+          "can you replace the image in the hero with this image instead?"
+        ]
+      },
+      "acceptanceCriteria": [
+        "The uploaded Fish Edit.png image appears in the hero section of the Home page",
+        "The image maintains proper responsive sizing and positioning within the hero layout",
+        "The existing flag motifs and other hero elements remain unchanged"
+      ]
+    }
+  ],
+  "constraints": [
+    "Do not modify the backend",
+    "Preserve the existing hero section layout structure with flag motifs",
+    "Maintain responsive image sizing behavior"
+  ],
+  "nonGoals": [
+    "Changing any other images on the site",
+    "Modifying the hero section layout or structure",
+    "Updating other pages or components"
+  ],
+  "imageRequirements": {
+    "required": [],
+    "edits": []
+  }
+}

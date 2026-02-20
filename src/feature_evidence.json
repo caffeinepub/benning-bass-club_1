@@ -1,0 +1,23 @@
+{
+  "kind": "feature_evidence_report",
+  "features": [
+    {
+      "featureId": "feature-replace-the-current-hero-section-logo-image-with-the-uploaded-fish-edit-png-image-in-the-home-page-component",
+      "featureTitle": "Replace the current hero section logo image with the uploaded 'Fish Edit.png' image in the Home page component",
+      "files": [
+        "frontend/src/pages/Home.tsx"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-1"
+      ],
+      "confidence": "high"
+    }
+  ]
+}

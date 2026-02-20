@@ -1,0 +1,19 @@
+{
+  "frontend/src/App.tsx": "Main application component with TanStack Router setup, defining all routes (/, /join, /schedule, /gallery, /info, /links, /about, /contact) with a Layout component that includes Navigation and Footer using Outlet for nested routing.",
+  "frontend/src/components/Navigation.tsx": "Sticky navigation header with improved spacing, larger text (text-base), clear hover states, and prominent Join button styled with primary green background; includes responsive mobile menu with full-width layout.",
+  "frontend/src/components/Footer.tsx": "Comprehensive footer with three-column layout displaying Benning Bass Club branding, quick links (Home, Schedule, Gallery, Join), Facebook link, sponsor mention, copyright line with dynamic year, and caffeine.ai attribution with UTM tracking.",
+  "frontend/src/pages/Home.tsx": "Complete homepage with hero section displaying the Fish Edit.png logo image, centered content with headline, B.A.S.S. affiliation subtext, three CTA buttons, and sections for About the Club, Upcoming Tournaments, Membership, Photo Highlights (6-photo grid), and Proud Sponsor section featuring the Summerland Outdoors logo.",
+  "frontend/src/pages/Join.tsx": "Join page with interest form collecting name, email, phone, fishing experience, and additional information from prospective members.",
+  "frontend/src/pages/Info.tsx": "Information Hub page displaying club meeting schedules, rules and guidelines, membership information, and dues/fees details in organized card layout.",
+  "frontend/src/pages/Links.tsx": "Helpful Links page organizing external resources into categories (fishing regulations, local lakes, bass fishing resources, local services) with external link icons.",
+  "frontend/src/pages/About.tsx": "About page describing club story, mission, values, membership demographics, and activities in a structured card-based layout.",
+  "frontend/src/pages/Contact.tsx": "Contact page providing email address, social media links, club leadership information, and meeting visit details.",
+  "frontend/src/index.css": "Global styles with OKLCH color system featuring earth-tone palette (forest green primary at 0.48 0.14 155, sand secondary, water blue accent) optimized for clean, patriotic, outdoors/fishing club aesthetic in both light and dark modes.",
+  "frontend/tailwind.config.js": "Tailwind configuration extending theme with custom font families (Inter), earth-tone color palette, and responsive design utilities for mobile-first layout.",
+  "frontend/src/pages/Schedule.tsx": "Tournament Schedule page displaying the complete 2025-2026 tournament schedule in a responsive table format (desktop) and card layout (mobile) with all 13 tournament dates, lakes, ramps, and draw dates.",
+  "frontend/src/pages/Gallery.tsx": "Photo Gallery page displaying all 8 fishing photos in a responsive Pinterest-style masonry grid layout with hover effects and clickable images that open in a lightbox for enlarged viewing.",
+  "frontend/src/pages/Merchandise.tsx": "Blank placeholder page for Merchandise with heading and placeholder text, ready for future content editing.",
+  "frontend/src/components/Lightbox.tsx": "Lightbox component that displays full-size images with navigation arrows, close button, keyboard controls (Escape, arrow keys), and image counter for gallery viewing.",
+  "frontend/src/hooks/useImagePreloader.ts": "Custom React hook that preloads the three home page images (two flag decorative images and main club logo) into browser cache on first load and tracks loading status, ensuring images persist in memory across navigation cycles.",
+  "frontend/src/main.tsx": "Application entry point that initializes React Query, Internet Identity provider, and preloads home page images immediately at app startup to ensure they're cached before any route navigation occurs."
+}
