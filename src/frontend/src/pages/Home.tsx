@@ -1,12 +1,54 @@
 import { Link } from '@tanstack/react-router';
 import { Button } from '@/components/ui/button';
 import { useImagePreloader } from '@/hooks/useImagePreloader';
+import { useFishScrollAnimation } from '@/hooks/useFishScrollAnimation';
+import { useAverageCatchSize } from '@/hooks/useAverageCatchSize';
+import { tournaments } from '@/data/tournaments';
+import { getNextUpcomingTournament } from '@/utils/tournamentHelpers';
+import { Fish } from 'lucide-react';
 
 export default function Home() {
   const { isLoading } = useImagePreloader();
+  const nextTournament = getNextUpcomingTournament(tournaments);
+  const fishAnimation = useFishScrollAnimation();
+  const { averageCatchSize } = useAverageCatchSize();
 
   return (
     <div className="flex flex-col">
+      {/* Floating Bass Fish - Left Side - Animated on Scroll */}
+      <div 
+        className="fixed left-8 top-1/2 -translate-y-1/2 z-40 pointer-events-none hidden lg:block"
+        style={{
+          opacity: fishAnimation.opacity,
+          transform: `translateY(calc(-50% + ${fishAnimation.translateY}px)) scaleX(${fishAnimation.scaleX})`,
+          transition: 'transform 0.8s ease-in-out, opacity 0.5s ease-out',
+        }}
+      >
+        <img 
+          src="/assets/image-11.png" 
+          alt="" 
+          className="w-32 xl:w-40 h-auto"
+          aria-hidden="true"
+        />
+      </div>
+
+      {/* Floating Bass Fish - Right Side (Mirrored) - Animated on Scroll */}
+      <div 
+        className="fixed right-8 top-1/2 -translate-y-1/2 z-40 pointer-events-none hidden lg:block"
+        style={{
+          opacity: fishAnimation.opacity,
+          transform: `translateY(calc(-50% + ${fishAnimation.translateY}px)) scaleX(${-fishAnimation.scaleX})`,
+          transition: 'transform 0.8s ease-in-out, opacity 0.5s ease-out',
+        }}
+      >
+        <img 
+          src="/assets/image-11.png" 
+          alt="" 
+          className="w-32 xl:w-40 h-auto"
+          aria-hidden="true"
+        />
+      </div>
+
       {/* Hero Section */}
       <section 
         className="relative overflow-hidden bg-background"
@@ -56,6 +98,19 @@ export default function Home() {
                 A B.A.S.S.-affiliated club in the Georgia B.A.S.S. Nation for active-duty military, retirees, and dependents.
               </p>
 
+              {/* Average Catch Size Statistic */}
+              {averageCatchSize && (
+                <div className={`flex items-center justify-center gap-3 mb-6 transition-opacity duration-300 ${isLoading ? 'opacity-0' : 'opacity-100'}`}>
+                  <div className="flex items-center gap-2 bg-primary/10 border border-primary/20 rounded-lg px-4 py-3">
+                    <Fish className="w-5 h-5 text-primary" />
+                    <div className="text-center">
+                      <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wide">Average Catch Size</p>
+                      <p className="text-2xl font-bold text-primary">{averageCatchSize} lbs</p>
+                    </div>
+                  </div>
+                </div>
+              )}
+
               {/* CTA Buttons */}
               <div className={`flex flex-col sm:flex-row gap-3 justify-center items-stretch sm:items-center transition-opacity duration-300 ${isLoading ? 'opacity-0' : 'opacity-100'}`}>
                 <Link to="/join" className="w-full sm:w-auto">
@@ -75,6 +130,19 @@ export default function Home() {
                 </Link>
               </div>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Team Photo Section */}
+      <section className="py-12 bg-background">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-5xl mx-auto">
+            <img 
+              src="/assets/Group fish-3.jpg" 
+              alt="Benning Bass Club team at tournament" 
+              className="w-full h-auto rounded-lg shadow-lg border border-border"
+            />
           </div>
         </div>
       </section>
@@ -101,19 +169,52 @@ export default function Home() {
               Upcoming Tournaments
             </h2>
             <div className="bg-card border border-border rounded-lg p-6 sm:p-8 shadow-sm">
-              <div className="space-y-4">
-                <div>
-                  <h3 className="text-xl font-semibold text-foreground mb-2">Next Tournament</h3>
-                  <p className="text-muted-foreground">Check our tournament schedule for upcoming events and locations.</p>
+              {nextTournament ? (
+                <div className="space-y-4">
+                  <div>
+                    <h3 className="text-xl font-semibold text-foreground mb-4">Next Tournament</h3>
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                      <div>
+                        <p className="text-sm font-semibold text-muted-foreground mb-1">Date</p>
+                        <p className="text-lg font-medium text-foreground">{nextTournament.date}</p>
+                      </div>
+                      <div>
+                        <p className="text-sm font-semibold text-muted-foreground mb-1">Lake</p>
+                        <p className="text-lg font-medium text-foreground">{nextTournament.lake}</p>
+                      </div>
+                      <div>
+                        <p className="text-sm font-semibold text-muted-foreground mb-1">Ramp</p>
+                        <p className="text-lg font-medium text-foreground">{nextTournament.ramp}</p>
+                      </div>
+                      <div>
+                        <p className="text-sm font-semibold text-muted-foreground mb-1">Draw Date</p>
+                        <p className="text-lg font-medium text-foreground">{nextTournament.drawDate}</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="pt-4">
+                    <Link to="/schedule">
+                      <Button size="lg" variant="outline" className="font-semibold">
+                        View Full Schedule
+                      </Button>
+                    </Link>
+                  </div>
                 </div>
-                <div className="pt-4">
-                  <Link to="/schedule">
-                    <Button size="lg" variant="outline" className="font-semibold">
-                      View Full Schedule
-                    </Button>
-                  </Link>
+              ) : (
+                <div className="space-y-4">
+                  <div>
+                    <h3 className="text-xl font-semibold text-foreground mb-2">Next Tournament</h3>
+                    <p className="text-muted-foreground">No upcoming tournaments scheduled at this time. Check back soon!</p>
+                  </div>
+                  <div className="pt-4">
+                    <Link to="/schedule">
+                      <Button size="lg" variant="outline" className="font-semibold">
+                        View Full Schedule
+                      </Button>
+                    </Link>
+                  </div>
                 </div>
-              </div>
+              )}
             </div>
           </div>
         </div>
@@ -178,11 +279,19 @@ export default function Home() {
               We're grateful for the support of our sponsors who help make our tournaments and events possible.
             </p>
             <div className="flex justify-center">
-              <img 
-                src="/assets/image-8.png" 
-                alt="Summerland Outdoors" 
-                className="max-w-xs sm:max-w-sm md:max-w-md h-auto"
-              />
+              <a 
+                href="https://summerlandoutdoors.com/" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                aria-label="Visit Summerland Outdoors website"
+                className="inline-block hover:opacity-80 transition-opacity"
+              >
+                <img 
+                  src="/assets/image-8.png" 
+                  alt="Summerland Outdoors" 
+                  className="max-w-xs sm:max-w-sm md:max-w-md h-auto"
+                />
+              </a>
             </div>
           </div>
         </div>

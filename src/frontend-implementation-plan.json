@@ -1,21 +1,21 @@
 {
   "kind": "implementation_plan",
   "version": "1.0",
-  "title": "Replace hero section image with uploaded Fish Edit image",
+  "title": "Remove Caffeine watermark from all pages",
   "requirements": [
     {
       "id": "REQ-1",
-      "summary": "Replace the current hero section logo image with the uploaded 'Fish Edit.png' image in the Home page component",
+      "summary": "Remove the 'Built with using caffeine' attribution text and link from the Footer component",
       "acceptanceCriteria": [
-        "The uploaded Fish Edit.png image appears in the hero section of the Home page",
-        "The image maintains proper responsive sizing and positioning within the hero layout",
-        "The existing flag motifs and other hero elements remain unchanged"
+        "The caffeine.ai attribution link is completely removed from the footer",
+        "The footer layout remains properly formatted after removal",
+        "All pages (home, join, schedule, gallery, info, links, about, contact, top10) display the updated footer without the watermark"
       ],
       "file_operations": [
         {
-          "path": "frontend/src/pages/Home.tsx",
+          "path": "frontend/src/components/Footer.tsx",
           "operation": "modify",
-          "description": "Update the hero section image reference to use the uploaded 'Fish Edit.png' asset instead of the current logo image. Preserve all existing hero layout structure, flag motifs, CTA buttons, and responsive sizing behavior. Update the image import path to reference the uploaded asset file."
+          "description": "Remove the caffeine.ai attribution section from the footer component while preserving the copyright and sponsor information. The footer contains three columns with club branding, quick links, and social media. Remove the link element containing 'Built with using caffeine' and the caffeine.ai URL with UTM tracking parameters. Ensure the footer layout remains properly formatted after the removal, maintaining the existing grid structure and spacing."
         }
       ]
     }

@@ -2,10 +2,10 @@
   "kind": "feature_evidence_report",
   "features": [
     {
-      "featureId": "feature-replace-the-current-hero-section-logo-image-with-the-uploaded-fish-edit-png-image-in-the-home-page-component",
-      "featureTitle": "Replace the current hero section logo image with the uploaded 'Fish Edit.png' image in the Home page component",
+      "featureId": "feature-remove-the-built-with-using-caffeine-attribution-text-and-link-from-the-footer-component",
+      "featureTitle": "Remove the 'Built with using caffeine' attribution text and link from the Footer component",
       "files": [
-        "frontend/src/pages/Home.tsx"
+        "frontend/src/components/Footer.tsx"
       ],
       "components": [
         "core-infrastructure@1.0.2",

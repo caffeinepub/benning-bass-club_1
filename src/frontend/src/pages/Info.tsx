@@ -71,22 +71,25 @@ export default function Info() {
               </CardContent>
             </Card>
 
+            <div className="w-full flex justify-center py-4">
+              <img 
+                src="/assets/image-10.png" 
+                alt="Benning Bass Club team members at Bass Nation Georgia tournament" 
+                className="w-full max-w-2xl h-auto rounded-lg shadow-md object-cover"
+              />
+            </div>
+
             <Card>
               <CardHeader>
                 <div className="flex items-center gap-3">
                   <Users className="h-6 w-6 text-primary" />
-                  <CardTitle>Membership Information</CardTitle>
+                  <CardTitle>Membership</CardTitle>
                 </div>
               </CardHeader>
-              <CardContent>
+              <CardContent className="space-y-6">
                 <CardDescription className="text-base space-y-3">
                   <p>
-                    Membership is open to all military personnel, veterans, and civilians in the Fort Moore / Benning area 
-                    who have an interest in bass fishing.
-                  </p>
-                  <p>
-                    Members receive access to exclusive tournaments, club resources, fishing reports, 
-                    and a supportive community of fellow anglers.
+                    Join our community of passionate anglers! Membership is open to active-duty military, retirees, and dependents. Enjoy competitive tournaments, camaraderie, and the thrill of bass fishing on Georgia's finest lakes.
                   </p>
                 </CardDescription>
               </CardContent>

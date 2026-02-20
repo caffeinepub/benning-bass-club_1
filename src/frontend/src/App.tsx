@@ -9,6 +9,7 @@ import About from './pages/About';
 import Contact from './pages/Contact';
 import Schedule from './pages/Schedule';
 import Gallery from './pages/Gallery';
+import Top10 from './pages/Top10';
 
 // Layout component that wraps all pages
 function Layout() {
@@ -77,6 +78,12 @@ const contactRoute = createRoute({
   component: Contact,
 });
 
+const top10Route = createRoute({
+  getParentRoute: () => rootRoute,
+  path: '/top10',
+  component: Top10,
+});
+
 // Create route tree
 const routeTree = rootRoute.addChildren([
   indexRoute,
@@ -87,6 +94,7 @@ const routeTree = rootRoute.addChildren([
   linksRoute,
   aboutRoute,
   contactRoute,
+  top10Route,
 ]);
 
 // Create router

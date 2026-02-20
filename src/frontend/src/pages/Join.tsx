@@ -2,8 +2,9 @@ import { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
-import { Textarea } from '@/components/ui/textarea';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
+import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
 import { UserPlus } from 'lucide-react';
 
 export default function Join() {
@@ -11,8 +12,9 @@ export default function Join() {
     name: '',
     email: '',
     phone: '',
-    experience: '',
-    message: '',
+    militaryAffiliation: '',
+    fishingExperience: '',
+    ownsBoat: '',
   });
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -22,10 +24,17 @@ export default function Join() {
     alert('Thank you for your interest! We will contact you soon.');
   };
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setFormData({
       ...formData,
       [e.target.name]: e.target.value,
+    });
+  };
+
+  const handleSelectChange = (name: string, value: string) => {
+    setFormData({
+      ...formData,
+      [name]: value,
     });
   };
 
@@ -54,7 +63,7 @@ export default function Join() {
             <CardContent>
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div className="space-y-2">
-                  <Label htmlFor="name">Full Name *</Label>
+                  <Label htmlFor="name">Name *</Label>
                   <Input
                     id="name"
                     name="name"
@@ -67,7 +76,7 @@ export default function Join() {
                 </div>
 
                 <div className="space-y-2">
-                  <Label htmlFor="email">Email Address *</Label>
+                  <Label htmlFor="email">Email *</Label>
                   <Input
                     id="email"
                     name="email"
@@ -80,11 +89,12 @@ export default function Join() {
                 </div>
 
                 <div className="space-y-2">
-                  <Label htmlFor="phone">Phone Number</Label>
+                  <Label htmlFor="phone">Phone Number *</Label>
                   <Input
                     id="phone"
                     name="phone"
                     type="tel"
+                    required
                     value={formData.phone}
                     onChange={handleChange}
                     placeholder="(555) 123-4567"
@@ -92,27 +102,55 @@ export default function Join() {
                 </div>
 
                 <div className="space-y-2">
-                  <Label htmlFor="experience">Fishing Experience</Label>
+                  <Label htmlFor="militaryAffiliation">Military Affiliation</Label>
                   <Input
-                    id="experience"
-                    name="experience"
+                    id="militaryAffiliation"
+                    name="militaryAffiliation"
                     type="text"
-                    value={formData.experience}
+                    value={formData.militaryAffiliation}
                     onChange={handleChange}
-                    placeholder="e.g., Beginner, Intermediate, Advanced"
+                    placeholder="e.g., Army, Navy, Air Force, Marine Corps, Coast Guard, Veteran, Family Member"
                   />
                 </div>
 
                 <div className="space-y-2">
-                  <Label htmlFor="message">Additional Information</Label>
-                  <Textarea
-                    id="message"
-                    name="message"
-                    rows={5}
-                    value={formData.message}
-                    onChange={handleChange}
-                    placeholder="Tell us why you want to join, what you hope to get out of membership, or any questions you have..."
-                  />
+                  <Label htmlFor="fishingExperience">Fishing Experience *</Label>
+                  <Select
+                    value={formData.fishingExperience}
+                    onValueChange={(value) => handleSelectChange('fishingExperience', value)}
+                    required
+                  >
+                    <SelectTrigger id="fishingExperience">
+                      <SelectValue placeholder="Select your experience level" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="none">None</SelectItem>
+                      <SelectItem value="some">Some</SelectItem>
+                      <SelectItem value="a lot">A Lot</SelectItem>
+                    </SelectContent>
+                  </Select>
+                </div>
+
+                <div className="space-y-3">
+                  <Label>Do You Own a Boat? *</Label>
+                  <RadioGroup
+                    value={formData.ownsBoat}
+                    onValueChange={(value) => handleSelectChange('ownsBoat', value)}
+                    required
+                  >
+                    <div className="flex items-center space-x-2">
+                      <RadioGroupItem value="yes" id="boat-yes" />
+                      <Label htmlFor="boat-yes" className="font-normal cursor-pointer">
+                        Yes
+                      </Label>
+                    </div>
+                    <div className="flex items-center space-x-2">
+                      <RadioGroupItem value="no" id="boat-no" />
+                      <Label htmlFor="boat-no" className="font-normal cursor-pointer">
+                        No
+                      </Label>
+                    </div>
+                  </RadioGroup>
                 </div>
 
                 <Button type="submit" size="lg" className="w-full">

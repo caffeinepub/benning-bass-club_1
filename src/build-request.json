@@ -1,36 +1,31 @@
 {
   "kind": "build_request",
-  "title": "Replace hero section image with uploaded Fish Edit image",
+  "title": "Remove Caffeine watermark from all pages",
   "priority": "normal",
   "requirements": [
     {
       "id": "REQ-1",
-      "text": "Replace the current hero section logo image with the uploaded 'Fish Edit.png' image in the Home page component",
+      "text": "Remove the 'Built with using caffeine' attribution text and link from the Footer component",
       "target": "frontend",
       "source": {
         "messageIds": [
           "msg-user-final"
         ],
         "quotes": [
-          "can you replace the image in the hero with this image instead?"
+          "can you remove built with using caffeine watermark from each of these pages?"
         ]
       },
       "acceptanceCriteria": [
-        "The uploaded Fish Edit.png image appears in the hero section of the Home page",
-        "The image maintains proper responsive sizing and positioning within the hero layout",
-        "The existing flag motifs and other hero elements remain unchanged"
+        "The caffeine.ai attribution link is completely removed from the footer",
+        "The footer layout remains properly formatted after removal",
+        "All pages (home, join, schedule, gallery, info, links, about, contact, top10) display the updated footer without the watermark"
       ]
     }
   ],
-  "constraints": [
-    "Do not modify the backend",
-    "Preserve the existing hero section layout structure with flag motifs",
-    "Maintain responsive image sizing behavior"
-  ],
+  "constraints": [],
   "nonGoals": [
-    "Changing any other images on the site",
-    "Modifying the hero section layout or structure",
-    "Updating other pages or components"
+    "Modifying the copyright or other footer content",
+    "Changing the footer's overall structure or styling"
   ],
   "imageRequirements": {
     "required": [],
