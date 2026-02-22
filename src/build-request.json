@@ -1,31 +1,32 @@
 {
   "kind": "build_request",
-  "title": "Remove Caffeine watermark from all pages",
+  "title": "Update navbar link text from 'top 10' to 'Standings'",
   "priority": "normal",
   "requirements": [
     {
       "id": "REQ-1",
-      "text": "Remove the 'Built with using caffeine' attribution text and link from the Footer component",
+      "text": "Change the navigation link text from 'top 10' to 'Standings' in the Navigation component",
       "target": "frontend",
       "source": {
         "messageIds": [
-          "msg-user-final"
+          "msg-12"
         ],
         "quotes": [
-          "can you remove built with using caffeine watermark from each of these pages?"
+          "yes, the current nav bar has a \"top 10\" link that needs to say \"Standings\" instead"
         ]
       },
       "acceptanceCriteria": [
-        "The caffeine.ai attribution link is completely removed from the footer",
-        "The footer layout remains properly formatted after removal",
-        "All pages (home, join, schedule, gallery, info, links, about, contact, top10) display the updated footer without the watermark"
+        "The navbar displays 'Standings' instead of 'top 10'",
+        "The link still navigates to the same page (Top10.tsx)",
+        "The text change is visible in both desktop and mobile navigation views"
       ]
     }
   ],
   "constraints": [],
   "nonGoals": [
-    "Modifying the copyright or other footer content",
-    "Changing the footer's overall structure or styling"
+    "Changing the route path or URL structure",
+    "Modifying the Top10 page content or functionality",
+    "Updating any other navigation links"
   ],
   "imageRequirements": {
     "required": [],

@@ -2,10 +2,10 @@
   "kind": "feature_evidence_report",
   "features": [
     {
-      "featureId": "feature-remove-the-built-with-using-caffeine-attribution-text-and-link-from-the-footer-component",
-      "featureTitle": "Remove the 'Built with using caffeine' attribution text and link from the Footer component",
+      "featureId": "feature-change-the-navigation-link-text-from-top-10-to-standings-in-the-navigation-component",
+      "featureTitle": "Change the navigation link text from 'top 10' to 'Standings' in the Navigation component",
       "files": [
-        "frontend/src/components/Footer.tsx"
+        "frontend/src/components/Navigation.tsx"
       ],
       "components": [
         "core-infrastructure@1.0.2",

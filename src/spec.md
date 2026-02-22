@@ -1,11 +1,9 @@
 # Specification
 
 ## Summary
-**Goal:** Remove the Caffeine watermark attribution from all pages of the application.
+**Goal:** Update the navigation bar link text from "top 10" to "Standings".
 
 **Planned changes:**
-- Remove the "Built with using caffeine" attribution text and link from the Footer component
-- Ensure footer layout remains properly formatted after removal
-- Verify the updated footer displays correctly across all pages (home, join, schedule, gallery, info, links, about, contact, top10)
+- Change the navigation link text from "top 10" to "Standings" in the Navigation component
 
-**User-visible outcome:** Users will see a cleaner footer without the Caffeine.ai attribution on all pages of the application.
+**User-visible outcome:** Users will see "Standings" in the navigation bar instead of "top 10", while the link continues to navigate to the same page.

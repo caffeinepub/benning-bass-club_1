@@ -11,7 +11,7 @@ export default function Navigation() {
   const navLinks = [
     { name: 'Home', path: '/' },
     { name: 'Tournament Schedule', path: '/schedule' },
-    { name: 'TOP 10', path: '/top10' },
+    { name: 'Standings', path: '/top10' },
     { name: 'Photo Gallery', path: '/gallery' },
   ];
 
