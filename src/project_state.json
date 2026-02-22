@@ -1,16 +1,93 @@
 {
   "schemaVersion": "1.0.0",
   "projectStateVersion": 3,
-  "summary": "App with navbar that needs text update from 'top 10' to 'Standings'",
-  "architectural_notes": [],
+  "summary": "Benning Bass Club website with tournament management, event listings, standings table, and cost acknowledgement modal",
+  "architectural_notes": [
+    "Standings table uses hardcoded data (24 anglers + 1 unknown entry) - admin editing to be implemented later",
+    "Standings table has sticky header, zebra striping, gold/green leader highlight, colored move arrows (green ↑, red ↓, gray —), colored badges for notes",
+    "Standings table is horizontally scrollable on mobile devices",
+    "Numeric columns in standings table are right-aligned, Angler column is left-aligned"
+  ],
   "known_issues": [],
   "isFixRequest": false,
   "existing_features": [
     {
-      "id": "feature-change-the-navigation-link-text-from-top-10-to-standings-in-the-navigation-component",
-      "title": "Change the navigation link text from 'top 10' to 'Standings' in the Navigation component",
+      "id": "feature-replace-the-existing-standings-table-on-the-standings-page-frontend-src-pages-top10-tsx-with-a-new-top-25-standings-table-containing-these-exact-columns-in-order-rank-angler-adj-pts-behind-leader-events-move-notes-populate-with-the-24-anglers-plus-1-unknown-name-error-entry-as-specified-in-the-user-s-data",
+      "title": "Replace the existing standings table on the Standings page (frontend/src/pages/Top10.tsx) with a new 'Top 25 Standings' table containing these exact columns in order: Rank, Angler, Adj Pts, Behind Leader, Events, Move, Notes. Populate with the 24 anglers plus 1 'Unknown / Name Error' entry as specified in the user's data.",
       "reqIds": [
         "REQ-1"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-add-section-title-top-25-standings-and-subtitle-adjusted-standings-through-january-2026-above-the-standings-table",
+      "title": "Add section title 'Top 25 Standings' and subtitle 'Adjusted standings through January 2026' above the standings table.",
+      "reqIds": [
+        "REQ-2"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-implement-sticky-table-header-that-remains-visible-when-scrolling-through-the-standings-table",
+      "title": "Implement sticky table header that remains visible when scrolling through the standings table.",
+      "reqIds": [
+        "REQ-3"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-apply-zebra-striping-to-table-rows-for-improved-readability",
+      "title": "Apply zebra striping to table rows for improved readability.",
+      "reqIds": [
+        "REQ-4"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-highlight-the-first-place-row-rank-1-cox-clint-with-a-subtle-gold-or-green-accent-to-distinguish-the-leader",
+      "title": "Highlight the first place row (Rank 1, Cox, Clint) with a subtle gold or green accent to distinguish the leader.",
+      "reqIds": [
+        "REQ-5"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-display-notes-column-values-as-small-colored-badges-with-different-styles-for-leader-tied-perfect-attendance-missed-1-event-missed-2-events-missed-multiple-events-partial-season-and-needs-correction-in-source-sheet",
+      "title": "Display Notes column values as small colored badges with different styles for: 'Leader', 'Tied', 'Perfect attendance', 'Missed 1 event', 'Missed 2 events', 'Missed multiple events', 'Partial season', and 'Needs correction in source sheet'.",
+      "reqIds": [
+        "REQ-6"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-color-code-move-column-arrows-green-for-upward-movement-red-for-downward-movement-and-gray-for-no-movement",
+      "title": "Color-code Move column arrows: green for upward movement (↑), red for downward movement (↓), and gray for no movement (—).",
+      "reqIds": [
+        "REQ-7"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-right-align-all-numeric-columns-rank-adj-pts-behind-leader-events-and-keep-the-angler-column-left-aligned",
+      "title": "Right-align all numeric columns (Rank, Adj Pts, Behind Leader, Events) and keep the Angler column left-aligned.",
+      "reqIds": [
+        "REQ-8"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-enable-horizontal-scrolling-on-mobile-devices-for-the-standings-table-to-ensure-all-columns-remain-accessible-on-smaller-screens",
+      "title": "Enable horizontal scrolling on mobile devices for the standings table to ensure all columns remain accessible on smaller screens.",
+      "reqIds": [
+        "REQ-9"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-remove-the-average-fish-size-tracker-component-from-the-homepage-frontend-src-pages-home-tsx",
+      "title": "Remove the average fish size tracker component from the homepage (frontend/src/pages/Home.tsx).",
+      "reqIds": [
+        "REQ-10"
       ],
       "version": 1
     }
@@ -18,12 +95,18 @@
   "new_feature_requests": [
     {
       "id": "AR-1",
-      "summary": "Change navbar link text from 'top 10' to 'Standings'",
+      "summary": "Replace Standings page table with Top 25 Standings table with specific columns and design features",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-2",
+      "summary": "Remove average fish size tracker from homepage",
       "reqIds": [],
       "status": "pending"
     }
   ],
-  "projectName": "Update navbar link text from 'top 10' to 'Standings'",
+  "projectName": "Benning Bass Club",
   "clarification_mode": "instant",
   "clarification_rounds": 0
 }

@@ -1,32 +1,203 @@
 {
   "kind": "build_request",
-  "title": "Update navbar link text from 'top 10' to 'Standings'",
+  "title": "Replace Standings table and remove average fish size tracker",
+  "projectName": "Benning Bass Club",
   "priority": "normal",
   "requirements": [
     {
       "id": "REQ-1",
-      "text": "Change the navigation link text from 'top 10' to 'Standings' in the Navigation component",
+      "text": "Replace the existing standings table on the Standings page (frontend/src/pages/Top10.tsx) with a new 'Top 25 Standings' table containing these exact columns in order: Rank, Angler, Adj Pts, Behind Leader, Events, Move, Notes. Populate with the 24 anglers plus 1 'Unknown / Name Error' entry as specified in the user's data.",
       "target": "frontend",
       "source": {
         "messageIds": [
-          "msg-12"
+          "msg-1",
+          "msg-3"
         ],
         "quotes": [
-          "yes, the current nav bar has a \"top 10\" link that needs to say \"Standings\" instead"
+          "replace the current table with this new table",
+          "Create a \"Standings Table\" section for the Benning Bass Club website"
         ]
       },
       "acceptanceCriteria": [
-        "The navbar displays 'Standings' instead of 'top 10'",
-        "The link still navigates to the same page (Top10.tsx)",
-        "The text change is visible in both desktop and mobile navigation views"
+        "Table displays all 24 named anglers plus the 'Unknown / Name Error' entry",
+        "Columns appear in exact order: Rank, Angler, Adj Pts, Behind Leader, Events, Move, Notes",
+        "All data values match the user-provided standings data exactly"
+      ]
+    },
+    {
+      "id": "REQ-2",
+      "text": "Add section title 'Top 25 Standings' and subtitle 'Adjusted standings through January 2026' above the standings table.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-1"
+        ],
+        "quotes": [
+          "Section title: \"Top 25 Standings\"",
+          "Subtitle: \"Adjusted standings through January 2026\""
+        ]
+      },
+      "acceptanceCriteria": [
+        "Title 'Top 25 Standings' appears above the table",
+        "Subtitle 'Adjusted standings through January 2026' appears below the title"
+      ]
+    },
+    {
+      "id": "REQ-3",
+      "text": "Implement sticky table header that remains visible when scrolling through the standings table.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-1"
+        ],
+        "quotes": [
+          "Sticky table header on scroll"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Table header row remains fixed at top when user scrolls down",
+        "Header maintains its styling while sticky"
+      ]
+    },
+    {
+      "id": "REQ-4",
+      "text": "Apply zebra striping to table rows for improved readability.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-1"
+        ],
+        "quotes": [
+          "Zebra striping for rows"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Alternating rows have different background colors",
+        "Striping pattern is consistent throughout the table"
+      ]
+    },
+    {
+      "id": "REQ-5",
+      "text": "Highlight the first place row (Rank 1, Cox, Clint) with a subtle gold or green accent to distinguish the leader.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-1"
+        ],
+        "quotes": [
+          "Highlight row 1 with a subtle gold/green accent"
+        ]
+      },
+      "acceptanceCriteria": [
+        "First row has a visually distinct gold or green background accent",
+        "Accent is subtle and does not interfere with text readability"
+      ]
+    },
+    {
+      "id": "REQ-6",
+      "text": "Display Notes column values as small colored badges with different styles for: 'Leader', 'Tied', 'Perfect attendance', 'Missed 1 event', 'Missed 2 events', 'Missed multiple events', 'Partial season', and 'Needs correction in source sheet'.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-1"
+        ],
+        "quotes": [
+          "Use small colored badges in Notes (Leader, Tied, Perfect attendance, Missed 1 event)"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Each note appears as a styled badge with appropriate color coding",
+        "Multiple notes in same cell are displayed as separate badges",
+        "Badge colors are consistent for each note type"
+      ]
+    },
+    {
+      "id": "REQ-7",
+      "text": "Color-code Move column arrows: green for upward movement (↑), red for downward movement (↓), and gray for no movement (—).",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-1"
+        ],
+        "quotes": [
+          "Make \"Move\" arrows colored:",
+          "green for ↑",
+          "red for ↓",
+          "gray for —"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Upward arrows display in green",
+        "Downward arrows display in red",
+        "No-change indicators display in gray"
+      ]
+    },
+    {
+      "id": "REQ-8",
+      "text": "Right-align all numeric columns (Rank, Adj Pts, Behind Leader, Events) and keep the Angler column left-aligned.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-1"
+        ],
+        "quotes": [
+          "Right-align numeric columns",
+          "Keep Angler column left-aligned"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Rank, Adj Pts, Behind Leader, and Events columns are right-aligned",
+        "Angler column remains left-aligned",
+        "Column headers match the alignment of their data"
+      ]
+    },
+    {
+      "id": "REQ-9",
+      "text": "Enable horizontal scrolling on mobile devices for the standings table to ensure all columns remain accessible on smaller screens.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-1"
+        ],
+        "quotes": [
+          "On mobile, allow horizontal scroll"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Table scrolls horizontally on mobile viewport sizes",
+        "All columns are accessible via horizontal scroll",
+        "Table maintains its structure and does not break layout"
+      ]
+    },
+    {
+      "id": "REQ-10",
+      "text": "Remove the average fish size tracker component from the homepage (frontend/src/pages/Home.tsx).",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-3"
+        ],
+        "quotes": [
+          "the homepage has an average fish size tracker, please take it off for now as we dont have those stats in the new table"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Average fish size tracker no longer appears on the homepage",
+        "Homepage layout adjusts appropriately after removal",
+        "No broken references or console errors result from removal"
       ]
     }
   ],
-  "constraints": [],
+  "constraints": [
+    "Keep the Standings page structure intact (navigation, header, footer)",
+    "Data must be hardcoded for now; do not implement admin editing functionality yet",
+    "Use existing design system and Tailwind CSS classes consistent with the rest of the site"
+  ],
   "nonGoals": [
-    "Changing the route path or URL structure",
-    "Modifying the Top10 page content or functionality",
-    "Updating any other navigation links"
+    "Admin interface for updating standings data",
+    "Real-time data fetching or backend integration for standings",
+    "Sorting or filtering functionality for the standings table",
+    "Export functionality for standings data"
   ],
   "imageRequirements": {
     "required": [],

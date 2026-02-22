@@ -2,10 +2,10 @@
   "kind": "feature_evidence_report",
   "features": [
     {
-      "featureId": "feature-change-the-navigation-link-text-from-top-10-to-standings-in-the-navigation-component",
-      "featureTitle": "Change the navigation link text from 'top 10' to 'Standings' in the Navigation component",
+      "featureId": "feature-replace-the-existing-standings-table-on-the-standings-page-frontend-src-pages-top10-tsx-with-a-new-top-25-standings-table-containing-these-exact-columns-in-order-rank-angler-adj-pts-behind-leader-events-move-notes-populate-with-the-24-anglers-plus-1-unknown-name-error-entry-as-specified-in-the-user-s-data",
+      "featureTitle": "Replace the existing standings table on the Standings page (frontend/src/pages/Top10.tsx) with a new 'Top 25 Standings' table containing these exact columns in order: Rank, Angler, Adj Pts, Behind Leader, Events, Move, Notes. Populate with the 24 anglers plus 1 'Unknown / Name Error' entry as specified in the user's data.",
       "files": [
-        "frontend/src/components/Navigation.tsx"
+        "frontend/src/pages/Top10.tsx"
       ],
       "components": [
         "core-infrastructure@1.0.2",
@@ -16,6 +16,169 @@
       ],
       "testIds": [
         "REQ-1"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-add-section-title-top-25-standings-and-subtitle-adjusted-standings-through-january-2026-above-the-standings-table",
+      "featureTitle": "Add section title 'Top 25 Standings' and subtitle 'Adjusted standings through January 2026' above the standings table.",
+      "files": [
+        "frontend/src/pages/Top10.tsx"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-2"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-implement-sticky-table-header-that-remains-visible-when-scrolling-through-the-standings-table",
+      "featureTitle": "Implement sticky table header that remains visible when scrolling through the standings table.",
+      "files": [
+        "frontend/src/pages/Top10.tsx"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-3"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-apply-zebra-striping-to-table-rows-for-improved-readability",
+      "featureTitle": "Apply zebra striping to table rows for improved readability.",
+      "files": [
+        "frontend/src/pages/Top10.tsx"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-4"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-highlight-the-first-place-row-rank-1-cox-clint-with-a-subtle-gold-or-green-accent-to-distinguish-the-leader",
+      "featureTitle": "Highlight the first place row (Rank 1, Cox, Clint) with a subtle gold or green accent to distinguish the leader.",
+      "files": [
+        "frontend/src/pages/Top10.tsx"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-5"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-display-notes-column-values-as-small-colored-badges-with-different-styles-for-leader-tied-perfect-attendance-missed-1-event-missed-2-events-missed-multiple-events-partial-season-and-needs-correction-in-source-sheet",
+      "featureTitle": "Display Notes column values as small colored badges with different styles for: 'Leader', 'Tied', 'Perfect attendance', 'Missed 1 event', 'Missed 2 events', 'Missed multiple events', 'Partial season', and 'Needs correction in source sheet'.",
+      "files": [
+        "frontend/src/pages/Top10.tsx"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-6"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-color-code-move-column-arrows-green-for-upward-movement-red-for-downward-movement-and-gray-for-no-movement",
+      "featureTitle": "Color-code Move column arrows: green for upward movement (↑), red for downward movement (↓), and gray for no movement (—).",
+      "files": [
+        "frontend/src/pages/Top10.tsx"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-7"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-right-align-all-numeric-columns-rank-adj-pts-behind-leader-events-and-keep-the-angler-column-left-aligned",
+      "featureTitle": "Right-align all numeric columns (Rank, Adj Pts, Behind Leader, Events) and keep the Angler column left-aligned.",
+      "files": [
+        "frontend/src/pages/Top10.tsx"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-8"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-enable-horizontal-scrolling-on-mobile-devices-for-the-standings-table-to-ensure-all-columns-remain-accessible-on-smaller-screens",
+      "featureTitle": "Enable horizontal scrolling on mobile devices for the standings table to ensure all columns remain accessible on smaller screens.",
+      "files": [
+        "frontend/src/pages/Top10.tsx"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-9"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-remove-the-average-fish-size-tracker-component-from-the-homepage-frontend-src-pages-home-tsx",
+      "featureTitle": "Remove the average fish size tracker component from the homepage (frontend/src/pages/Home.tsx).",
+      "files": [
+        "frontend/src/hooks/useAverageCatchSize.ts",
+        "frontend/src/pages/Home.tsx"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-10"
       ],
       "confidence": "high"
     }

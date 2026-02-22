@@ -1,21 +1,166 @@
 {
   "kind": "implementation_plan",
   "version": "1.0",
-  "title": "Update navbar link text from 'top 10' to 'Standings'",
+  "title": "Replace Standings table and remove average fish size tracker",
   "requirements": [
     {
       "id": "REQ-1",
-      "summary": "Change the navigation link text from 'top 10' to 'Standings' in the Navigation component",
+      "summary": "Replace the existing standings table with a new 'Top 25 Standings' table containing columns: Rank, Angler, Adj Pts, Behind Leader, Events, Move, Notes, populated with 24 anglers plus 1 'Unknown / Name Error' entry",
       "acceptanceCriteria": [
-        "The navbar displays 'Standings' instead of 'top 10'",
-        "The link still navigates to the same page (Top10.tsx)",
-        "The text change is visible in both desktop and mobile navigation views"
+        "Table displays all 24 named anglers plus the 'Unknown / Name Error' entry",
+        "Columns appear in exact order: Rank, Angler, Adj Pts, Behind Leader, Events, Move, Notes",
+        "All data values match the user-provided standings data exactly"
       ],
       "file_operations": [
         {
-          "path": "frontend/src/components/Navigation.tsx",
+          "path": "frontend/src/pages/Top10.tsx",
           "operation": "modify",
-          "description": "Update the navigation link text from 'top 10' to 'Standings' in both the desktop navigation menu and the mobile hamburger menu. Ensure the link still points to the /top10 route while displaying the new text 'Standings'."
+          "description": "Replace the existing leaderboard table structure with a new standings table containing the exact columns: Rank, Angler, Adj Pts, Behind Leader, Events, Move, Notes. Update the hardcoded data to include all 24 anglers plus the 'Unknown / Name Error' entry as specified in the BuildRequest. Maintain the responsive design pattern (table view for desktop, card view for mobile) while adapting to the new column structure."
+        }
+      ]
+    },
+    {
+      "id": "REQ-2",
+      "summary": "Add section title 'Top 25 Standings' and subtitle 'Adjusted standings through January 2026' above the standings table",
+      "acceptanceCriteria": [
+        "Title 'Top 25 Standings' appears above the table",
+        "Subtitle 'Adjusted standings through January 2026' appears below the title"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/pages/Top10.tsx",
+          "operation": "modify",
+          "description": "Add a section title 'Top 25 Standings' using a heading element styled consistently with other page headings. Add the subtitle 'Adjusted standings through January 2026' immediately below the title with appropriate styling to distinguish it as a subtitle. Position both above the standings table."
+        }
+      ]
+    },
+    {
+      "id": "REQ-3",
+      "summary": "Implement sticky table header that remains visible when scrolling through the standings table",
+      "acceptanceCriteria": [
+        "Table header row remains fixed at top when user scrolls down",
+        "Header maintains its styling while sticky"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/pages/Top10.tsx",
+          "operation": "modify",
+          "description": "Apply sticky positioning to the table header row using Tailwind CSS classes (sticky top-0 z-10) to keep the header visible during vertical scrolling. Ensure the header maintains its background color and styling when in sticky state to prevent content overlap."
+        }
+      ]
+    },
+    {
+      "id": "REQ-4",
+      "summary": "Apply zebra striping to table rows for improved readability",
+      "acceptanceCriteria": [
+        "Alternating rows have different background colors",
+        "Striping pattern is consistent throughout the table"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/pages/Top10.tsx",
+          "operation": "modify",
+          "description": "Apply alternating background colors to table rows using Tailwind CSS classes or conditional styling based on row index. Use subtle color variations (e.g., even:bg-gray-50 dark:even:bg-gray-800) that maintain text readability and work in both light and dark modes."
+        }
+      ]
+    },
+    {
+      "id": "REQ-5",
+      "summary": "Highlight the first place row (Rank 1, Cox, Clint) with a subtle gold or green accent to distinguish the leader",
+      "acceptanceCriteria": [
+        "First row has a visually distinct gold or green background accent",
+        "Accent is subtle and does not interfere with text readability"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/pages/Top10.tsx",
+          "operation": "modify",
+          "description": "Add conditional styling to the first row (Rank 1) to apply a subtle gold or green background accent. Use a color that stands out from the zebra striping but maintains text readability (e.g., bg-yellow-50 border-l-4 border-yellow-400 or bg-green-50 border-l-4 border-green-400). Apply to both desktop table and mobile card views."
+        }
+      ]
+    },
+    {
+      "id": "REQ-6",
+      "summary": "Display Notes column values as small colored badges with different styles for: 'Leader', 'Tied', 'Perfect attendance', 'Missed 1 event', 'Missed 2 events', 'Missed multiple events', 'Partial season', and 'Needs correction in source sheet'",
+      "acceptanceCriteria": [
+        "Each note appears as a styled badge with appropriate color coding",
+        "Multiple notes in same cell are displayed as separate badges",
+        "Badge colors are consistent for each note type"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/pages/Top10.tsx",
+          "operation": "modify",
+          "description": "Create a badge rendering function that maps each note type to a specific color scheme (e.g., Leader: gold, Tied: blue, Perfect attendance: green, Missed events: yellow/orange/red based on count, Partial season: gray, Needs correction: red). Render notes as small pill-shaped badges with appropriate background and text colors. Handle cases where multiple notes exist for a single angler by rendering multiple badges with spacing."
+        }
+      ]
+    },
+    {
+      "id": "REQ-7",
+      "summary": "Color-code Move column arrows: green for upward movement (↑), red for downward movement (↓), and gray for no movement (—)",
+      "acceptanceCriteria": [
+        "Upward arrows display in green",
+        "Downward arrows display in red",
+        "No-change indicators display in gray"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/pages/Top10.tsx",
+          "operation": "modify",
+          "description": "Apply conditional text color classes to the Move column based on the arrow character: green (text-green-600 dark:text-green-400) for ↑, red (text-red-600 dark:text-red-400) for ↓, and gray (text-gray-500 dark:text-gray-400) for — or no movement. Ensure colors work in both light and dark modes."
+        }
+      ]
+    },
+    {
+      "id": "REQ-8",
+      "summary": "Right-align all numeric columns (Rank, Adj Pts, Behind Leader, Events) and keep the Angler column left-aligned",
+      "acceptanceCriteria": [
+        "Rank, Adj Pts, Behind Leader, and Events columns are right-aligned",
+        "Angler column remains left-aligned",
+        "Column headers match the alignment of their data"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/pages/Top10.tsx",
+          "operation": "modify",
+          "description": "Apply text-right alignment to the Rank, Adj Pts, Behind Leader, and Events columns for both header and data cells. Keep the Angler column with text-left alignment. Ensure alignment is consistent in both desktop table view and mobile card view. The Move and Notes columns can use appropriate alignment based on their content."
+        }
+      ]
+    },
+    {
+      "id": "REQ-9",
+      "summary": "Enable horizontal scrolling on mobile devices for the standings table to ensure all columns remain accessible on smaller screens",
+      "acceptanceCriteria": [
+        "Table scrolls horizontally on mobile viewport sizes",
+        "All columns are accessible via horizontal scroll",
+        "Table maintains its structure and does not break layout"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/pages/Top10.tsx",
+          "operation": "modify",
+          "description": "Wrap the standings table in a container with overflow-x-auto class on mobile viewports to enable horizontal scrolling. Set a minimum width on the table to prevent column squashing. Ensure the table maintains its structure and all seven columns are accessible via horizontal scroll on small screens."
+        }
+      ]
+    },
+    {
+      "id": "REQ-10",
+      "summary": "Remove the average fish size tracker component from the homepage",
+      "acceptanceCriteria": [
+        "Average fish size tracker no longer appears on the homepage",
+        "Homepage layout adjusts appropriately after removal",
+        "No broken references or console errors result from removal"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/pages/Home.tsx",
+          "operation": "modify",
+          "description": "Remove the average fish size tracker section and any related calculations or data fetching logic from the homepage. Remove the import and usage of the useAverageCatchSize hook if it is being used. Adjust the page layout to maintain visual balance after removing this component."
+        },
+        {
+          "path": "frontend/src/hooks/useAverageCatchSize.ts",
+          "operation": "delete",
+          "description": "Delete the useAverageCatchSize hook file since it is no longer needed after removing the average fish size tracker from the homepage."
         }
       ]
     }
